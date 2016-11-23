@@ -68,6 +68,11 @@
         return;
     }
     
+    if ([[datasource objectForKey:@"name"] isEqualToString:LUserInor(@"nowName")]) {
+        KKShowNoticeMessage(@"不能接受自己的任务");
+        return;
+    }
+    
     KKShowNoticeMessage(@"已接受");
     
     NSArray *arr=[LUserDefault  objectForKey:@"yijieshou"];
