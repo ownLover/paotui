@@ -27,11 +27,16 @@
         if ([arr isArray]) {
             [array addObjectsFromArray:arr];
         }
-        if (dataSource) {
-            [dataSource removeAllObjects];
-            [dataSource addObjectsFromArray:array];
-            [myTableView reloadData];
+        [dataSource removeAllObjects];
+
+        for (int i=0; i<array.count; i++) {
+            NSDictionary *dic=array[i];
+            if ([dic[@"name"] isEqualToString:LUserInor(@"nowName")]) {
+                [dataSource addObject:dic];
+            }
+        
         }
+        
 
     }
     if ([type isEqualToString:@"已接受"]) {
@@ -40,12 +45,15 @@
         if ([arr isArray]) {
             [array addObjectsFromArray:arr];
         }
-        if (dataSource) {
-            [dataSource removeAllObjects];
-            [dataSource addObjectsFromArray:array];
-            [myTableView reloadData];
+        [dataSource removeAllObjects];
+        
+        for (int i=0; i<array.count; i++) {
+            NSDictionary *dic=array[i];
+            if ([dic[@"jieshouren"] isEqualToString:LUserInor(@"nowName")]) {
+                [dataSource addObject:dic];
+            }
+            
         }
-
     }
     if ([type isEqualToString:@"已完成"]) {
         NSArray *arr=[LUserDefault objectForKey:@"yiwancheng"];
@@ -53,10 +61,14 @@
         if ([arr isArray]) {
             [array addObjectsFromArray:arr];
         }
-        if (dataSource) {
-            [dataSource removeAllObjects];
-            [dataSource addObjectsFromArray:array];
-            [myTableView reloadData];
+        [dataSource removeAllObjects];
+        
+        for (int i=0; i<array.count; i++) {
+            NSDictionary *dic=array[i];
+            if ([dic[@"wanchengren"] isEqualToString:LUserInor(@"nowName")]) {
+                [dataSource addObject:dic];
+            }
+            
         }
 
     }

@@ -15,6 +15,7 @@
 @implementation XiangqingViewController
 {
     NSDictionary *datasource;
+    NSUInteger nowIndex;
 }
 @synthesize isShow;
 @synthesize btnName;
@@ -23,6 +24,7 @@
 {
     self = [super init];
     if (self) {
+        nowIndex=index;
         NSArray *arr=[LUserDefault objectForKey:@"renwu"];
         NSMutableArray *array=[[NSMutableArray alloc]init];
         if ([arr isArray]) {
@@ -55,6 +57,7 @@
             [array addObjectsFromArray:arr];
         }
         [array addObject:datasource];
+        [datasource setValue:LUserInor(@"nowName") forKey:@"wanchengren"];
         [LUserDefault setObject:array forKey:@"yiwancheng"];
         
         
@@ -80,12 +83,34 @@
     if ([arr isArray]) {
         [array addObjectsFromArray:arr];
     }
+    [datasource setValue:LUserInor(@"nowName") forKey:@"jieshouren"];
     [array addObject:datasource];
     [LUserDefault setObject:array forKey:@"yijieshou"];
+    
+    
+    
+    
+    
+    
     
     [self.navigationController popViewControllerAnimated:YES];
 
 }
+
+- (void)del{
+    NSArray *arr=[LUserDefault objectForKey:@"renwu"];
+    NSMutableArray *array=[[NSMutableArray alloc]init];
+    if ([arr isArray]) {
+        [array addObjectsFromArray:arr];
+    }
+    NSMutableDictionary *adic = [[NSMutableDictionary alloc]initWithDictionary:[array objectAtIndex:nowIndex]];;
+    [adic setObject:@"YES" forKey:@"yibeijieshou"];
+    [array replaceObjectAtIndex:nowIndex withObject:adic];
+    [LUserDefault setObject:array forKey:@"renwu"];
+    
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"详情";

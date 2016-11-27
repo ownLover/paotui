@@ -28,7 +28,8 @@
     self.view.backgroundColor=[UIColor whiteColor];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg%ld.png",(long)arc4random()%5]]];
-    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg0.png"]];
+
 }
 
 

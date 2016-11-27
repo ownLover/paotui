@@ -28,11 +28,23 @@
     if ([arr isArray]) {
         [array addObjectsFromArray:arr];
     }
-    if (dataSource) {
-        [dataSource removeAllObjects];
-        [dataSource addObjectsFromArray:array];
-        [myTableView reloadData];
+    [dataSource removeAllObjects];
+    for (int i=0; i<array.count; i++) {
+        NSDictionary *dic=[array objectAtIndex:i];
+        if ([[dic validStringForKey:@"yibeijieshou"]isEqualToString:@"YES"]) {
+            
+        }else{
+            [dataSource addObject:dic];
+            }
+        ;
     }
+    
+//    if (dataSource) {
+//        [dataSource removeAllObjects];
+//        [dataSource addObjectsFromArray:array];
+//        [myTableView reloadData];
+//    }
+    [myTableView reloadData];
 }
 
 - (void)viewDidLoad {
